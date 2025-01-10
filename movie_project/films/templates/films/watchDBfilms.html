@@ -8,13 +8,13 @@
   <h1 align="center">Страница фильмов</h1><br>
   {% if films %}
     {% for film in films %}
-      <div class="card" style="width: 30rem;">
+      <div class="card" style="width: 65rem;">
         <div class="card-body">
           <h5 class="card-title">{{film.title}}</h5>
           <p class="card-text">{{film.short_description}}</p>
           <p class="card-text">{{film.feedback}}</p>
-        </div><br>
-      </div>
+        </div>
+      </div><br>
     {% endfor %}
   {% else %}
     <h4>База фильмов пуста</h4>
