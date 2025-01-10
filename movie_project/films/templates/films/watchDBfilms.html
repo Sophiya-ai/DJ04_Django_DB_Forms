@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'films/layout.html' %}
 
-</body>
-</html>
+{% block title %}
+  <title>База данных фильмов</title>
+{% endblock %}
+
+{% block content %}
+  <h1>Страница фильмов</h1>
+  {% if films %}
+    {% for film in films %}
+      <div class="card" style="width: 30rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{film.title}}</h5>
+          <p class="card-text">{{film.short_description}}</p>
+          <p class="card-text">{{film.feedback}}</p>
+        </div><br>
+      </div>
+    {% endfor %}
+  {% else %}
+    <h4>База фильмов пуста</h4>
+  {% endif %}
+{% endblock %}

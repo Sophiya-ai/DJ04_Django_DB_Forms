@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'films/layout.html' %}
 
-</body>
-</html>
+{% block title %}
+  <title>Страница для добавления фильмов</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h2>Форма для добавления фильмов</h2>
+            </div>
+            <div class="card-body">
+                <form method="post"> <!-- можно указать здесь action указывает, куда будут перенаправляться данные,
+                    когда мы их отправим, и какая функция будет их обрабатывать. Можем указать action.
+                    Если его не указать, обрабатывать будет та же функция, которая открывает страницу
+
+                    Отлавливаем ошибку CSRF. Для прохождения проверки в начале формы
+                    (прямо под строкой <form method=”post”>) добавляем {% csrf_token %}-->
+
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{form.title}}
+                    </div><br>
+                    <div class="form-group">
+                        {{form.short_description}}
+                    </div><br>
+                    <div class="form-group">
+                        {{form.feedback}}
+                    </div><br>
+                    <button type="submit" class="btn btn-primary">Добавить фильм</button>
+                </form>
+                <p>{{error}}</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
